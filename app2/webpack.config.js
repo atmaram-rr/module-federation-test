@@ -9,7 +9,7 @@ module.exports = {
     mode: 'development',
     entry: {
         // TODO: Change to handle both js and ts files
-        rrCustom: path.join(appDirectory, 'src/index.js'),
+        bundle: path.join(appDirectory, 'src/index.js'),
     },
     output: {
         path: path.join(appDirectory, 'build'),
@@ -77,9 +77,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: true,
             template: path.join(appDirectory, 'src/index.html'),
-            templateParameters: {
-                PUBLIC_URL: '',
-            },
         }),
 
         new ForkTsCheckerWebpackPlugin({

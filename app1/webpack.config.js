@@ -34,7 +34,7 @@ module.exports = {
     mode: 'development',
     entry: {
         // TODO: Change to handle both js and ts files
-        rrCustom: path.join(appDirectory, 'src/index.js'),
+        bundle: path.join(appDirectory, 'src/index.js'),
     },
     performance: {
         maxEntrypointSize: 4096000,
@@ -97,16 +97,13 @@ module.exports = {
         new HtmlWebpackPlugin({
             inject: true,
             template: path.join(appDirectory, 'src/index.html'),
-            templateParameters: {
-                PUBLIC_URL: '',
-            },
         }),
         new Webpack.container.ModuleFederationPlugin({
             name: 'rrCustom',
             filename: 'remoteEntry.js',
             exposes: {
-                'leftbarEntries': path.join(appDirectory, 'src/leftbarEntries.tsx'),
-                'routeComponents': path.join(appDirectory, 'src/routeComponents.tsx'),
+                './leftbarEntries': path.join(appDirectory, 'src/leftbarEntries.tsx'),
+                './routeComponents': path.join(appDirectory, 'src/routeComponents.tsx'),
             },
             // shared: ['react', 'react-dom', '@reach/router'],
             shared: [

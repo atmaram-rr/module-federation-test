@@ -10,6 +10,8 @@ export default class Main extends React.Component {
   render() {
     console.log('Components', routeComponents);
     const Component = routeComponents?.[0].component ?? null;
-    return <div>App 2</div>;
+    return <div>App 2
+      <Component />
+    </div>;
   }
 }
